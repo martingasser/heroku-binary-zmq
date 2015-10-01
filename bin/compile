@@ -26,8 +26,8 @@ npecho $ENV_DIR
 VENDOR_DIR=$BUILD_DIR/vendor
 
 echo "$PKG_CONFIG_PATH:$BUILD_DIR/vendor/lib/pkgconfig">$ENV_DIR/PKG_CONFIG_PATH
-echo "-L$BUILD_DIR/lib" >$ENV_DIR/LDFLAGS
-echo "-L$BUILD_DIR/include" >$ENV_DIR/CPPFLAGS
+echo "-L$BUILD_DIR/vendor/lib" >$ENV_DIR/LDFLAGS
+echo "-L$BUILD_DIR/vendor/include" >$ENV_DIR/CPPFLAGS
 
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$BUILD_DIR/vendor/lib/pkgconfig
 
