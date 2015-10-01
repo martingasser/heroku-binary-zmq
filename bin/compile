@@ -27,7 +27,7 @@ curl -s $ZMQ_VENDOR_URL | tar zxf -
 
 npecho "zeromq  unpacked in $BUILD_DIR"
 
-npecho "Testing: $(ls $BUILD_DIR)"
+ls $BUILD_DIR
 
 npecho "setting zeromq compile flags"
 
