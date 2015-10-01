@@ -38,7 +38,6 @@ echo "-I$BUILD_DIR/vendor/include" >$ENV_DIR/CPPFLAGS
 
 PKG_CONFIG_FILE="$BUILD_DIR/vendor/lib/pkgconfig/libzmq.pc"
 
-ls "$BUILD_DIR/vendor/lib/pkgconfig"
 
 # generate pkg-config file
 echo "prefix=$VENDOR_DIR" > $PKG_CONFIG_FILE
@@ -51,9 +50,9 @@ echo "Version: 3.2.5" >> $PKG_CONFIG_FILE
 echo "Libs: -L\${libdir} -lzmq" >> $PKG_CONFIG_FILE
 echo "Cflags: -I\${includedir}" >> $PKG_CONFIG_FILE
 
-cat $PKG_CONFIG_FILE
+# cat $PKG_CONFIG_FILE
 
-export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:PKG_CONFIG_PATH
+export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:$BUILD_DIR/vendor/lib/pkgconfig/"
 # export CPPFLAGS="-I$BUILD_DIR/vendor/include"
 # export CFLAGS="-I$BUILD_DIR/vendor/include"
 # export LDFLAGS="-L$BUILD_DIR/vendor/lib"
