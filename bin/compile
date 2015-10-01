@@ -21,6 +21,12 @@ npecho() {
 		echo "       $1"
 }
 
+npecho $ENV_DIR
+
+echo "$PKG_CONFIG_PATH:$BUILD_DIR/lib/pkgconfig">$ENV_DIR/PKG_CONFIG_PATH
+echo "-L$BUILD_DIR/lib" >$ENV_DIR/LDFLAGS
+echo "-L$BUILD_DIR/include" >$ENV_DIR/CPPFLAGS
+
 cd $BUILD_DIR
 
 npecho "fetching binary from $ZMQ_VENDOR_URL"
@@ -29,8 +35,4 @@ curl -s $ZMQ_VENDOR_URL | tar zxf -
 npecho "zeromq  unpacked in $BUILD_DIR"
 
 npecho "setting zeromq compile flags"
-
-echo "$PKG_CONFIG_PATH:$BUILD_DIR/lib/pkgconfig">$ENV_DIR/PKG_CONFIG_PATH
-echo "-L$BUILD_DIR/lib" >$ENV_DIR/LDFLAGS
-echo "-L$BUILD_DIR/include" >$ENV_DIR/CPPFLAGS
 
