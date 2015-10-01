@@ -25,11 +25,13 @@ cd $BUILD_DIR
 npecho "fetching binary from $ZMQ_VENDOR_URL"
 curl -s $ZMQ_VENDOR_URL | tar zxf -
 
-npecho "zeromq  unpacked in $BUILD_DIR/$ZMQ_NAME"
+npecho "zeromq  unpacked in $BUILD_DIR"
+
+npecho "Testing: $(ls $BUILD_DIR)"
 
 npecho "setting zeromq compile flags"
 
 export LDFLAGS=-L$BUILD_DIR/lib
 export CPPFLAGS=-I$BUILD_DIR/include
 export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:$BUILD_DIR/lib/pkgconfig/"
-echo "Testing: $(ls $PKG_CONFIG_PATH)"
+npecho "Testing: $(ls $PKG_CONFIG_PATH)"
