@@ -51,6 +51,9 @@ echo "Version: 3.2.5" >> $PKG_CONFIG_FILE
 echo "Libs: -L\${libdir} -lzmq" >> $PKG_CONFIG_FILE
 echo "Cflags: -I\${includedir}" >> $PKG_CONFIG_FILE
 
+echo "**** PKG_CONFIG_PATH ****"
+echo $BUILD_DIR/vendor/lib/pkgconfig
+
 export PKG_CONFIG_PATH=$BUILD_DIR/vendor/lib/pkgconfig
 
 
