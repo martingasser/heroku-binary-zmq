@@ -6,6 +6,7 @@ set -o pipefail
 
 BUILD_DIR=${1%/}
 CACHE_DIR=${2%/}
+ENV_DIR=${3%/}
 ZMQ_VENDOR_URL="$(cat $BUILD_DIR/zmq-vendor-url)"
 
 indent() {
@@ -28,11 +29,8 @@ curl -s $ZMQ_VENDOR_URL | tar zxf -
 npecho "zeromq  unpacked in $BUILD_DIR"
 
 npecho "setting zeromq compile flags"
-export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:$BUILD_DIR/lib/pkgconfig"
 
-pkg-config libzmq --cflags
+echo "$PKG_CONFIG_PATH:$BUILD_DIR/lib/pkgconfig">$ENV_DIR/PKG_CONFIG_PATH
+echo "-L$BUILD_DIR/lib" >$ENV_DIR/LDFLAGS
+echo "-L$BUILD_DIR/include" >$ENV_DIR/CPPFLAGS
 
-
-
-export LDFLAGS=-L$BUILD_DIR/lib
-export CPPFLAGS=-I$BUILD_DIR/include
