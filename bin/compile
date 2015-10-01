@@ -31,6 +31,7 @@ echo "-I$BUILD_DIR/vendor/include" >$ENV_DIR/CPPFLAGS
 
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$BUILD_DIR/vendor/lib/pkgconfig
 export CPPFLAGS="-I$BUILD_DIR/vendor/include"
+export CFLAGS="-I$BUILD_DIR/vendor/include"
 export LDFLAGS="-L$BUILD_DIR/vendor/lib"
 
 mkdir $VENDOR_DIR
