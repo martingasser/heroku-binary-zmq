@@ -55,8 +55,4 @@ echo "**** PKG_CONFIG_PATH ****"
 echo $BUILD_DIR/vendor/lib/pkgconfig
 
 export PKG_CONFIG_PATH=$BUILD_DIR/vendor/lib/pkgconfig
-
-
-
-
-
+echo "$PKG_CONFIG_PATH:$BUILD_DIR/vendor/lib/pkgconfig">$ENV_DIR/PKG_CONFIG_PATH
