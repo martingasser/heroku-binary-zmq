@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#bind/detect <build-dir>
+
+if [ -f $1/zmq-vendor-url ]; then
+		echo "zmq-vendor-url" && exit 0
+else
+		exit 1
+fi	
