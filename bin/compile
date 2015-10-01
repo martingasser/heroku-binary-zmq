@@ -54,7 +54,7 @@ echo "Cflags: -I\${includedir}" >> $PKG_CONFIG_FILE
 echo "**** PKG_CONFIG_PATH ****"
 echo $BUILD_DIR/vendor/lib/pkgconfig
 
-#export PKG_CONFIG_PATH=$BUILD_DIR/vendor/lib/pkgconfig
+export PKG_CONFIG_PATH=$BUILD_DIR/vendor/lib/pkgconfig
 
 
 
