@@ -27,9 +27,11 @@ VENDOR_DIR=$BUILD_DIR/vendor
 
 echo "$PKG_CONFIG_PATH:$BUILD_DIR/vendor/lib/pkgconfig">$ENV_DIR/PKG_CONFIG_PATH
 echo "-L$BUILD_DIR/vendor/lib" >$ENV_DIR/LDFLAGS
-echo "-L$BUILD_DIR/vendor/include" >$ENV_DIR/CPPFLAGS
+echo "-I$BUILD_DIR/vendor/include" >$ENV_DIR/CPPFLAGS
 
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$BUILD_DIR/vendor/lib/pkgconfig
+export CPPFLAGS="-I$BUILD_DIR/vendor/include"
+export LDFLAGS="-L$BUILD_DIR/vendor/lib"
 
 mkdir $VENDOR_DIR
 cd $VENDOR_DIR
