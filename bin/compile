@@ -25,14 +25,28 @@ npecho $ENV_DIR
 
 VENDOR_DIR=$BUILD_DIR/vendor
 
+
 echo "$PKG_CONFIG_PATH:$BUILD_DIR/vendor/lib/pkgconfig">$ENV_DIR/PKG_CONFIG_PATH
 echo "-L$BUILD_DIR/vendor/lib" >$ENV_DIR/LDFLAGS
 echo "-I$BUILD_DIR/vendor/include" >$ENV_DIR/CPPFLAGS
 
-export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$BUILD_DIR/vendor/lib/pkgconfig
-export CPPFLAGS="-I$BUILD_DIR/vendor/include"
-export CFLAGS="-I$BUILD_DIR/vendor/include"
-export LDFLAGS="-L$BUILD_DIR/vendor/lib"
+PKG_CONFIG_FILE="$BUILD_DIR/vendor/lib/pkgconfig/libzmq.pc"
+
+# generate pkg-config file
+echo "prefix=$VENDOR_DIR" > PKG_CONFIG_FILE
+echo "exec_prefix=\${prefix}" >> PKG_CONFIG_FILE
+echo "libdir=\${exec_prefix}/lib" >> PKG_CONFIG_FILE
+echo "includedir=\${prefix}/include" >> PKG_CONFIG_FILE
+echo "Name: libzmq" >> PKG_CONFIG_FILE
+echo "Description: 0MQ c++ library" >> PKG_CONFIG_FILE
+echo "Version: 3.2.5" >> PKG_CONFIG_FILE
+echo "Libs: -L\${libdir} -lzmq" >> PKG_CONFIG_FILE
+echo "Cflags: -I\${includedir}" >> PKG_CONFIG_FILE
+
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:PKG_CONFIG_PATH
+# export CPPFLAGS="-I$BUILD_DIR/vendor/include"
+# export CFLAGS="-I$BUILD_DIR/vendor/include"
+# export LDFLAGS="-L$BUILD_DIR/vendor/lib"
 
 mkdir $VENDOR_DIR
 cd $VENDOR_DIR
