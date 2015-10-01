@@ -27,11 +27,12 @@ curl -s $ZMQ_VENDOR_URL | tar zxf -
 
 npecho "zeromq  unpacked in $BUILD_DIR"
 
-ls "$BUILD_DIR/lib/pkgconfig"
-
 npecho "setting zeromq compile flags"
 export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:$BUILD_DIR/lib/pkgconfig"
-npecho "Testing: $(ls $PKG_CONFIG_PATH)"
+
+pkg-config libzmq --cflags
+
+
 
 export LDFLAGS=-L$BUILD_DIR/lib
 export CPPFLAGS=-I$BUILD_DIR/include
